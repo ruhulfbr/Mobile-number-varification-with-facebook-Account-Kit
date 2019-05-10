@@ -1,0 +1,18 @@
+
+
+<form id="login_success" method="post" action="/login_success.php">
+  <input id="csrf" type="text" name="csrf" />
+  <input id="code" type="text" name="code" />
+</form>
+
+<script>
+  function loginCallback(response) {
+    if (response.status === "PARTIALLY_AUTHENTICATED") {
+      document.getElementById("code").value = response.code;
+      document.getElementById("csrf").value = response.state;
+      document.getElementById("login_success").submit();
+    }
+  }
+</script>
+
+    
